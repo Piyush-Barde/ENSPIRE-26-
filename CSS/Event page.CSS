@@ -1,0 +1,734 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+}
+
+/* --- Desktop Pill Navbar --- */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    position: fixed;
+    top: 15px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%; 
+    max-width: 1200px;
+    height: 70px; /* Slightly taller for the big buttons */
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 100px; /* Full Pill Shape */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+nav {
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; /* Keeps large buttons equally spaced */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    /* 1. Increase text size and weight */
+    font-size: 18px; /* Standard links are usually 12-14px; 18px feels much bigger */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px; /* Spreads letters for a "wide" premium look */
+    
+    /* 2. Coloring and Transition */
+    color: rgba(255, 255, 255, 0.85);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    white-space: nowrap; /* Keeps items on one line */
+    
+    /* 3. Padding for larger clickable area */
+    padding: 5px 10px;
+}
+
+/* 4. Hover effect to make them pop even more */
+nav ul li:hover {
+    color: #fff;
+    transform: scale(1.15); /* Makes the link grow 15% bigger on hover */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+/* Slim logo for the slim bar */
+.logo img {
+    height: 30px; 
+    width: auto;
+}
+
+/* Ensure the Pass icon is tiny and balanced */
+.pass-btn img {
+    height: 60px !important; 
+    width: auto;
+    cursor: pointer;
+    
+    /* THE FIX: Moves the icon down by 5 pixels */
+    transform: translateY(5px); 
+    
+    /* Keep your existing transition and filter */
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+}
+
+/* Update hover to keep the downward position while scaling */
+.pass-btn img:hover {
+    transform: translateY(5px) scale(1.1); 
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
+}
+
+/* Title */
+.title {
+  text-align: center;
+  margin: 40px 0 80px;
+  font-size: 48px;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 10px red;
+  -webkit-text-stroke: 2px red;
+  text-stroke: 2px red;
+  margin-top: 130px;
+
+  /* Strong red glow */
+  text-shadow:
+    0 0 0px red,
+    0 0 15px red,
+    0 0 25px red,
+
+}
+
+/* --- Timeline Container --- */
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 95%;
+    margin: 80px auto 120px;
+    padding: 0 30px;
+    position: relative;
+}
+
+/* --- Individual Event Block --- */
+.event {
+    text-align: center;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    /* This ensures children can use the --event-color variable */
+    color: var(--event-color); 
+}
+
+.event:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    /* Adjust this value if the line is no longer hitting the center of the stone */
+    top: 150px; 
+    left: 75%; 
+    width: 60%; 
+    height: 5px;
+    background: #ffffff;
+    z-index: 1;
+    opacity: 0.6;
+    border-radius: 10px;
+}
+/* --- The Circle Container --- */
+.circle {
+    position: relative;
+    z-index: 2;
+    width: 95px;
+    height: 95px;
+    background: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* THE FIX: Border is transparent by default */
+    border: 2px solid transparent; 
+    transition: all 0.4s ease-in-out;
+}
+
+/* --- THE HOVER TRIGGER --- */
+/* When hovering over the event block, the border and glow appear */
+.event:hover .circle {
+    border: 2px solid var(--event-color);
+    box-shadow: inset 0 0 15px var(--event-color), 0 0 25px var(--event-color);
+    transform: scale(1.05); /* Adds a slight grow effect to the stone */
+}
+
+/* --- The Stone Image (Always Visible) --- */
+.circle img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    mix-blend-mode: screen; /* Removes black/white backgrounds from stone JPGs */
+    pointer-events: none;
+}
+
+
+.event h3 {
+    /* 1. Increase font size and weight */
+    font-size: 22px; /* Adjust this number to make it even bigger if needed */
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+    /* 2. Alignment Logic */
+    min-height: 90px; /* Increased slightly to accommodate larger text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+    /* 3. Text Glow (Optional) */
+    color: #fff;
+    text-shadow: 0 0 10px var(--event-color);
+    
+    transition: transform 0.3s ease;
+}
+/* --- The Connecting Line --- */
+.line {
+    position: absolute;
+    /* Adjust this 'top' value until it hits the dead-center of your stones */
+    top: 195px; 
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.4); 
+    z-index: 1;
+}
+/* Much stronger glow on hover */
+.event:hover h3 {
+  text-shadow:
+    0 0 10px currentColor,
+    0 0 25px currentColor,
+    0 0 45px currentColor,
+    0 0 70px currentColor;
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Example: Making the Ideathon and VR stones 20% bigger */
+.event.vr .circle img {
+    transform: scale(1.4); /* 1.2 = 120% size */
+    transition: transform 0.3s ease;
+}
+
+.event p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.pass-btn {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pass-btn img {
+  height: 250px;   /* matches navbar height */
+  width: auto;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.pass-btn img {
+  height: 78px;        /* 👈 matches text height */
+  width: auto;
+  display: block;
+  cursor: pointer;
+  background: transparent;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.pass-btn {
+  display: flex;
+  align-items: center;
+}
+
+.pass-btn img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 6px gold);
+}
+
+/* Container for the images */
+.event-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 320px);
+  gap: 60px 100px;
+  max-width: 700px;
+  margin: 80px auto;
+  width: max-content;     /* Shrinks the container to fit the cards exactly */
+  
+  justify-content: center;
+  perspective: 1500px; /* Essential for 3D flip */
+}
+
+.card {
+  width: 293px;
+  height: 320px;
+  background: transparent;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 45px;
+  border: 3px solid currentColor;
+  box-shadow: 0 0 20px currentColor;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Clips white image corners */
+  backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 🔑 Makes the image fill the whole card */
+  mix-blend-mode: screen; /* 🔑 Magic trick to hide white backgrounds */
+}
+
+/* 1. Slow down the flip time */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* Increased from 0.6s to 1.2s for a smoother, slower feel */
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); 
+  transform-style: preserve-3d;
+}
+
+/* 2. Make the back face match the theme color */
+.card-back {
+    transform: rotateY(180deg);
+    background: #000;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    border: 3px solid currentColor;
+    box-shadow: 0 0 20px currentColor;
+    border-radius: 30px;
+    
+    /* THE FIX: This forces the back to use the Red/Green/Blue of the card class */
+    color: inherit; 
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
+}
+
+.card-back h3 {
+    color: #fff !important;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.card-back p {
+    font-size: 1.15rem;
+    color: currentColor ; /* 🔑 Automatically turns Purple, Green, Red, etc. */
+    font-weight: 600;
+    line-height: 1.4;
+    max-width: 90%;
+    margin-bottom: 80px;
+}
+
+.btn-register {
+  margin-top: 10px;
+  padding: 12px 30px;
+  background: currentColor; /* Button background matches the stone color */
+  color: #f4e9e9; /* Black text for contrast */
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 50px;
+  box-shadow: 0 0 15px currentColor;
+  transition: transform 0.3s ease;
+}
+
+.btn-register:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+#bg-video {
+  /* 🔑 This stops the video from pushing content down */
+  position: fixed; 
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  
+  /* 🔑 This puts the video BEHIND your text and cards */
+  z-index: -1; 
+  
+  /* Centers the video */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  /* Ensures the video fills the screen without stretching */
+  object-fit: cover; 
+  
+  /* Helps your neon cards stand out against the motion */
+  filter: brightness(0.4); 
+}
+
+/* 🔑 Make sure the body doesn't have a solid color blocking the video */
+body {
+  margin: 0;
+  background: rgb(239, 236, 236); /* Fallback color */
+}
+
+/* The base layer video */
+#bg-video {
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover; 
+    z-index: -3; /* Bottom-most layer */
+    filter: brightness(0.4); 
+}
+
+/* The hover-only background image */
+#main-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -2; /* Sits directly above the video */
+    opacity: 0;   /* Hidden by default */
+    transition: opacity 0.8s ease; /* Smooth fade-in effect */
+}
+
+/* The color tint layer */
+#bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Above the image, below the text */
+    pointer-events: none;
+    transition: background 0.8s ease;
+}
+.button-group {
+    position: absolute;
+    bottom: 25px; /* Distance from bottom of card */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 15px;
+    z-index: 999; /* Forces buttons to the very front */
+}
+
+.btn-flip {
+    display: flex !important; /* Ensures it's not hidden */
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    max-width: 110px;
+    height: 40px; /* Fixed height helps visibility */
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    
+    /* THE FIX: Use the variable we created above */
+    background-color: var(--event-color) !important; 
+    color: #000000 !important; 
+    
+    box-shadow: 0 0 15px var(--event-color);
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.btn-flip:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px currentColor;
+    filter: brightness(1.2);
+}
+/* Colors */
+.idea { --event-color: #ff9800; color: var(--event-color); }
+.speaker { --event-color: #00ff00; color: var(--event-color); }
+.startup { --event-color: #ffeb3b; color: var(--event-color); }
+.vr { --event-color: #ff0000; color: var(--event-color); }
+.auction { --event-color: #00ffff; color: var(--event-color); }
+.tech { --event-color: #9c27b0; color: var(--event-color); }
+
+/* Container for the carousel */
+.carousel-container {
+    position: relative;
+    max-width: 1100px;
+    margin: 60px auto;
+    width: 90%;
+    
+    /* Curves and Glow */
+    border-radius: 30px; 
+    overflow: hidden; /* Clips the image to the curves */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 85vh; /* Larger view */
+    object-fit: contain;
+    background: #000; /* Fills empty space if image is thin */
+}
+
+/* Adjust navigation buttons for visibility */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 50%;
+    user-select: none;
+    transition: 0.3s;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.Flow {
+    text-align: center;
+    margin-top: 100px; /* Adds space after the card section */
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+@media (max-width: 900px) {
+  .timeline {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .line {
+    display: none;
+  }
+
+  .event {
+    width: 100%;
+  }
+
+  .event-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Hamburger Icon Appearance --- */
+.hamburger {
+    display: none; /* Hidden on desktop by default */
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    z-index: 1100;
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff !important; /* Forces bars to be white */
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+.pass-btn img {
+    height: 45px; /* Adjust to fit inside your 60px-70px header */
+    width: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+    display: block;
+}
+
+.pass-btn img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
+}
+
+@media (max-width: 768px) {
+    @media (max-width: 768px) {
+      .timeline {
+        flex-direction: row !important; /* Forces side-by-side row */
+        overflow-x: auto; /* Allows swiping if the screen is too narrow */
+        padding-bottom: 20px;
+    }
+    
+    .event {
+        min-width: 140px; /* Ensures stones don't squish too much */
+    }
+    
+    /* Hide the scrollbar for a clean look */
+    .timeline::-webkit-scrollbar {
+        display: none;
+    }
+    /* 1. Reset Desktop Styles */
+    header {
+        justify-content: space-between;
+    }
+
+    /* 2. Initial State of the Menu (Hidden) */
+    nav#nav-menu {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Move it completely off-screen to the left */
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95); /* Darker for visibility */
+        backdrop-filter: blur(20px);
+        display: flex !important; /* Ensure flex is active */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: 0.5s ease-in-out; /* Smooth slide effect */
+        z-index: 1050;
+    }
+
+    /* 3. ACTIVE STATE (This is what the JS triggers) */
+    nav#nav-menu.active {
+        left: 0; /* Slide into view */
+    }
+
+    /* 4. Make the List Vertical */
+    nav ul {
+        flex-direction: column !important;
+        gap: 30px;
+        text-align: center;
+    }
+
+    nav ul li {
+        font-size: 24px !important;
+        color: white !important;
+        list-style: none;
+    }
+}
+
+    .hamburger {
+        display: flex !important; /* Forces it to show on mobile */
+    }
+
+    /* Center the gold ticket in the mobile list */
+    .pass-btn {
+        margin-top: 20px;
+    }
+    nav ul li.pass-btn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+/* Force the Passes image to appear on all screens */
+.pass-btn img {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: 60px !important; /* Forces a height */
+    width: auto !important;   /* Keeps it from being 0px wide */
+    position: relative !important;
+    z-index: 9999 !important; /* Puts it on the very top layer */
+}
+
+nav#nav-menu.active ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .pass-btn {
+        margin-top: 20px; /* Gives it breathing room in the vertical list */
+    }
+
+    .pass-btn img {
+        display: block !important;
+        height: 75px !important; /* Force a height you can see */
+        width: auto !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 20px auto; /* Centers it in the mobile list */
+    }
+  }
+.gold-ticket {
+    background: linear-gradient(45deg, #ffd700, #ffae00);
+    color: #000 !important; /* Force black text */
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-weight: 900;
+    font-size: 14px;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+    box-shadow: 0 0 15px #ffae00;
+    border: 2px dashed #000;
+    cursor: pointer;
+    transition: 0.3s;
+    line-height: 1;
+}
+
+.gold-ticket:hover {
+    transform: scale(1.1) rotate(-2deg);
+}
