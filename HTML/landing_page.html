@@ -14,45 +14,34 @@
 <body>
 
     <!-- NAVBAR -->
-    <header>
-        <div class="header-content">
-            <div class="logo-section">
-                <a href=""><img src="../Images/Logo/Ecell-logo.png" alt="E-CELL DMCE Logo"></a>
-                <span class="logo-text"></span>
-            </div>
-            <button class="hamburger" onclick="toggleMenu()">☰</button>
-            <nav class="custom-nav">
-                    <a href="../Home.html">Home</a>
-                <nav class="custom-nav">
-                    <a href="../Home.html"class="active">Home</a>
-                    <a href="../HTML/events.html">Events</a>
-                    <a href="../HTML/speakers.html">Speakers</a>
-                    <a href="../HTML/sponsors.html">Sponsors</a>
-                    <a href="../HTML/contact.html">Contact Us</a>
-                    <a href="../HTML/faqs.html">FAQs</a>
-                    <li class="pass-btn">
-                    <a href="../HTML/passes.html">
-                      <img src="../Images/Event page/Passes.jpeg" alt="Passes">
-                    </a>
-                </li>
-                </nav>
-            
-                    <a href="../HTML/passes.html" class="pass-wrapper">
-                        <button class="nav-passes">
-                        <span class="passes-text">PASSES</span>
-                        </button>
-                    </a>
-            </nav>
-            <div class="mobile-nav" id="mobileNav">
-                <a href="../Home.html" class="active">Home</a>
-                <a href="../HTML/events.html">Events</a>
-                <a href="../HTML/speakers.html">Speakers</a>
-                <a href="../HTML/sponsors.html">Sponsors</a>
-                <a href="../HTML/contact.html">Contact Us</a>
-                <a href="../HTML/faqs.html">FAQs</a>
-                <a href="../HTML/passes.html"> PASSES</a>
-            </div>
-    </header>
+<header>
+  <div class="logo">
+    <img src="../Images/Event page/logo.png" alt="Logo" style="height: 30px;">
+  </div>
+
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="../HTML/landing_page.html" class="active">Home</a></li>
+      <li><a href="../HTML/events.html">Events</a></li>
+      <li><a href="../HTML/speaker.html">Speakers</a></li>
+      <li><a href="../HTML/Sponsor.html">Sponsors</a></li>
+      <li><a href="../HTML/contact.html">Contact</a></li>
+      <li><a href="../HTML/faqs.html">FAQs</a></li>
+    </ul>
+  </nav>
+
+  <div class="pass-btn-container">
+    <a href="../HTML/passes.html" class="pass-btn">
+      <img src="../Images/Event page/Passes.jpeg" alt="Passes" style="height: 40px; border-radius: 5px;">
+    </a>
+  </div>
+  
+  <div class="hamburger" id="hamburger">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+</header>
     <!-- HERO -->
 
 <section class="hero">
@@ -70,10 +59,16 @@
             <button class="btn">Download Brochure</button>
         </div>
     </section>
+    
+<div class="unified-bg-wrapper space-bg">
+    
+    <video autoplay muted loop playsinline class="unified-video-bg">
+        <source src="../Images/Bg-img/Video_Generation_With_Image_Reference.mp4" type="video/mp4">
+    </video>
 
-    <div class="unified-bg-wrapper space-bg">
         <!-- ABOUT -->
         <section class="about">
+            
             <h2 class="about-title">ABOUT ENSPIRE’26</h2>
 
             <p class="about-text">
