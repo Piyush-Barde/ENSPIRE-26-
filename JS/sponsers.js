@@ -1,10 +1,3 @@
-document.querySelectorAll('.buy-now-trigger').forEach(button => {
-    button.addEventListener('click', (e) => {
-        // Find the title within the same card
-        const passName = button.closest('.pass-card').querySelector('.pass-title').innerText;
-        alert(`Redirecting to payment for ${passName}...`);
-    });
-});
 // Ensure the script runs after the HTML is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
@@ -29,4 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error("Hamburger or Nav Menu ID not found in HTML!");
     }
+});document.querySelectorAll('.sponsor-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.boxShadow = '0 0 20px rgba(255,255,255,0.2)';
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.boxShadow = 'none';
+    });
 });
