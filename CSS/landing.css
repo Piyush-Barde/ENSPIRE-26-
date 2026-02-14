@@ -557,8 +557,8 @@ CONTENT .content {
 =========================== */
 
 .card-front {
-  width: 270px;
-  height: 350px;
+  width: 100%;
+  height: 100%;
   padding: 0;
   position: absolute;
   inset: 0;
@@ -722,10 +722,21 @@ CONTENT .content {
     font-size: 2.2rem;
   }
 
+  .events-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
   .event-card {
-    height: 300px !important;
-    width: 280px !important;
+    height: 280px !important;
+    width: 100% !important;
     margin: 0 auto;
+  }
+
+  .card-front {
+    width: 100% !important;
+    height: 100% !important;
   }
 
   .card-front img {
@@ -736,17 +747,70 @@ CONTENT .content {
 
   .card-hover h2,
   .card-hover h3 {
-    font-size: 1.4rem !important;
+    font-size: 1.2rem !important;
   }
 
   .card-hover h4 {
-    font-size: 0.9rem !important;
+    font-size: 0.85rem !important;
     margin-bottom: 8px !important;
   }
 
   .card-hover button {
     padding: 6px 14px !important;
-    font-size: 12px !important;
+    font-size: 11px !important;
+  }
+}
+
+@media(max-width:600px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .event-card {
+    height: 220px !important;
+    max-width: none;
+  }
+
+  .card-hover {
+    padding: 12px !important;
+  }
+
+  .card-hover h2,
+  .card-hover h3 {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .card-hover h4 {
+    font-size: 0.75rem !important;
+    margin-bottom: 6px !important;
+  }
+
+  .card-hover button {
+    padding: 5px 10px !important;
+    font-size: 10px !important;
+    margin: 3px !important;
+  }
+}
+
+@media(max-width:480px) {
+  .event-card {
+    height: 180px !important;
+  }
+
+  .card-hover h2,
+  .card-hover h3 {
+    font-size: 0.9rem !important;
+  }
+
+  .card-hover h4 {
+    font-size: 0.65rem !important;
+  }
+
+  .card-hover button {
+    padding: 4px 8px !important;
+    font-size: 9px !important;
   }
 }
 
